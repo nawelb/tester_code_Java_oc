@@ -73,6 +73,12 @@ class CalculatorToTest {
 		//Assert
 		assertEquals(expectedResult, actualResult);
 	}
+	@Test
+	void add() {
+		int somme=calculatorUnderTest.add(a,b);
+		//Assert
+		assertEquals(5, somme);
+	}
 
 	@Test
 	void multiply() {
