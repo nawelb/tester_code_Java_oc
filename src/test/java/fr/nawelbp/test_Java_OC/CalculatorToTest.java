@@ -1,5 +1,6 @@
 package fr.nawelbp.test_Java_OC;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.MessageFormat;
@@ -71,20 +72,20 @@ class CalculatorToTest {
 	void add(int arg1, int arg2, int expectedResult) {		
 		int actualResult = calculatorUnderTest.add(arg1, arg2);		
 		//Assert
-		assertEquals(expectedResult, actualResult);
+		assertThat(actualResult).isEqualTo(expectedResult);
 	}
 	@Test
 	void add() {
 		int somme=calculatorUnderTest.add(a,b);
 		//Assert
-		assertEquals(5, somme);
+		assertThat(somme).isEqualTo(5);
 	}
 
 	@Test
 	void multiply() {
 		int produit=calculatorUnderTest.multiply(a,b);
 		//Assert
-		assertEquals(6, produit);
+		assertThat(produit).isEqualTo(6);
 	}
 	
 	@ParameterizedTest(name="{0} x 0 should equal to 0")
@@ -94,7 +95,7 @@ class CalculatorToTest {
 		//Act
 		int actualResult = calculatorUnderTest.multiply(argument, 0);
 		//Assert
-		assertEquals(0, actualResult);
+		assertThat(actualResult).isEqualTo(0);
 	}
 	
 	/*
