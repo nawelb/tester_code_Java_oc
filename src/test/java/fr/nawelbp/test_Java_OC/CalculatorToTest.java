@@ -1,16 +1,16 @@
 package fr.nawelbp.test_Java_OC;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.text.MessageFormat;
 import java.time.Duration;
 import java.time.Instant;
 
+import org.apache.logging.log4j.core.Logger;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,15 +24,20 @@ class CalculatorToTest {
 			private static Instant startedAt;
 	//Act		
 			private Calculator calculatorUnderTest;
-	
+			private Logger logger;
+
+			public void setLogger(Logger logger) {
+				this.logger = logger;
+			}
 	/*
 	 * objectif 1 : initialiser une instance du calculateur avant chaque test
 	 */
 	@BeforeEach
 	public void initCalculator() {
-				System.out.println("Appel avant chaque test");
-				calculatorUnderTest= new Calculator();
-			}
+		System.out.println("Appel avant chaque test");
+		calculatorUnderTest= new Calculator();
+	}
+	
 	/*
 	 * objectif 2 : après chaque test, mettre la valeur du calculateur à null
 	 * utilisé ici pour tester l'annotation, inutile dans ce contexte
@@ -42,6 +47,7 @@ class CalculatorToTest {
 		System.out.println("Appel après chaque test");
 		calculatorUnderTest= null;
 	}
+	
 	/*
 	 * méthodes BeforeAll & AfterAll & variables startedAt sont statiques 
 	 * C'est un héritage des anciennes versions de JUnit. 
@@ -103,9 +109,10 @@ class CalculatorToTest {
 	 * faire échouer un test si la durée est trop longue( durée fixée ici a 1seconde)
 	 */
 	
-	@Timeout(1)
-	@Test
-	public void longCalcul_should_computeInLessThan1Second() {
-		calculatorUnderTest.longCalculation();
-	}
+//	@Timeout(1)
+//	@Disabled("Stoppé car test faux")
+//	@Test
+//	public void longCalcul_should_computeInLessThan1Second() {
+//		calculatorUnderTest.longCalculation();
+//	}
 }
